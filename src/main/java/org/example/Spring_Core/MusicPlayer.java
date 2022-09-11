@@ -1,57 +1,65 @@
 package org.example.Spring_Core;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import java.util.Random;
 
 /**
  * @author Дмитрий Карпушов 04.09.2022
  */
+
 public class MusicPlayer {
-    //private Music music;
-    private List<Music> musicList = new ArrayList<>();
+    @Value("${musicPlayer.name}")
     private String name;
+    @Value("${musicPlayer.volume}")
     private int volume;
 
-    //IoC
+    private Music music1;
+    private Music music2;
 
-
-    public MusicPlayer(List<Music> musicList, String name, int volume) {
-        this.musicList = musicList;
-        this.name = name;
-        this.volume = volume;
+    public MusicPlayer(@Qualifier("rockMusic") Music music1,@Qualifier("classicalMusic") Music music2) {
+        this.music1 = music1;
+        this.music2 = music2;
     }
-
-    public MusicPlayer() {
-    }
-
-
-    public void playMusic() {
-        for (Music music: musicList){
-            System.out.println("Playing : "+music.getSong());
-        }
-    }
-
-    public List<Music> getMusicList() {
-        return musicList;
-    }
-
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
+    public String playMusic(){
+        return "Playing: " + music1.getSong()+", "+music2.getSong();
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getVolume() {
         return volume;
     }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
 }
+
+
+
+
+/*public class MusicPlayer {
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
+
+    @Autowired
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
+    }
+
+    public void playMusic(Janr janr) {
+        Random random = new Random();
+        int randomNumber = random.nextInt(3);
+
+        if (janr == Janr.CLASSICAL) {
+            // случайная классическая песня
+            System.out.println(classicalMusic.getSong().get(randomNumber));
+        } else {
+            // случайная рок песня
+            System.out.println(rockMusic.getSong().get(randomNumber));
+        }
+    }
+}*/

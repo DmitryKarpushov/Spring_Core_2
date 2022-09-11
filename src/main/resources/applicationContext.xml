@@ -1,65 +1,32 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
-    <bean id="musicBean"
-          class="org.example.Spring_Core.ClassicalMusic">
-    </bean>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--       xmlns:context="http://www.springframework.org/schema/context"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--        http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--        http://www.springframework.org/schema/context-->
+<!--        http://www.springframework.org/schema/context/spring-context.xsd">-->
 
-    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+<!--    <context:component-scan base-package="org.example.Spring_Core" />-->
 
-    <bean id="musicBean1"
-          class="org.example.Spring_Core.ClassicalMusic">
-    </bean>
-
-    <bean id="musicBean2"
-          class="org.example.Spring_Core.RockMusic">
-    </bean>
-
-    <bean id="musicBean3"
-          class="org.example.Spring_Core.RapMusic">
-    </bean>
-
-    <bean id="musicPlayer"
-          class="org.example.Spring_Core.MusicPlayer">
-        <property name="musicList">
-            <list>
-                <ref bean="musicBean1"/>
-                <ref bean="musicBean2"/>
-                <ref bean="musicBean3"/>
-            </list>
-        </property>
-
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+<!--    <context:property-placeholder location="classpath:musicPlayer.properties" />-->
 
 
-    <!--Внедрили зависимости через ссылку-->
-    <!-- <bean id="musicPlayer"
-          class="org.example.Spring_Core.MusicPlayer">
-        <constructor-arg ref="musicBean"/>
-    </bean>-->
-    <!--Внедрили зависимости через setter-->
-    <!--
-    <bean id="musicPlayer"
-          class="org.example.Spring_Core.MusicPlayer">
-        <property name="music" ref="musicBean" />
-    </bean>
-    -->
-    <!--Внедрили зависимости через простые значения-->
-    <!--  <bean id="musicPlayer"
-           class="org.example.Spring_Core.MusicPlayer">
-         <property name="music" ref="musicBean"/> -->
+<!--&lt;!&ndash;    <context:property-placeholder location="classpath:musicPlayer.properties"/>&ndash;&gt;-->
 
-    <!-- <property name="name" value="Some name" />
-      <property name="volume" value="50" /> -->
-    <!--     <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean> -->
+<!--&lt;!&ndash;    <bean id="musicBean"&ndash;&gt;-->
+<!--&lt;!&ndash;          class="org.example.Spring_Core.ClassicalMusic"&ndash;&gt;-->
+<!--&lt;!&ndash;          init-method="doMyInit"&ndash;&gt;-->
+<!--&lt;!&ndash;          destroy-method="doMyDestroy"&ndash;&gt;-->
+<!--&lt;!&ndash;          factory-method="getClassicalMusic">&ndash;&gt;-->
+<!--&lt;!&ndash;    </bean>&ndash;&gt;-->
 
-</beans>
+
+<!--    &lt;!&ndash;    <bean id="musicPlayer"&ndash;&gt;-->
+<!--    &lt;!&ndash;          class="org.example.Spring_Core.MusicPlayer"&ndash;&gt;-->
+<!--    &lt;!&ndash;    scope="prototype">&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="music" ref="musicBean" />&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="name" value="${musicPlayer.name}"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <property name="volume" value="${musicPlayer.volume}"/>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </bean>&ndash;&gt;-->
+<!--</beans>-->
